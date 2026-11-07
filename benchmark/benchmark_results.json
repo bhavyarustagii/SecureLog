@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-11-07 22:25:42",
+  "total_benchmark_duration_s": 7.09,
+  "pillar_1_ml_models": [
+    {
+      "model": "Existing Isolation Forest (Heuristic)",
+      "type": "Unsupervised",
+      "recall": 0.4125,
+      "precision": 0.6971830985915493,
+      "f1_score": 0.518324607329843,
+      "fpr": 0.04479166666666667,
+      "roc_auc": 0.5794487847222223,
+      "p50_latency_ms": 7.627050043083727,
+      "throughput_sps": 46266.308983064126,
+      "train_time_sec": 0.0
+    },
+    {
+      "model": "Calibrated Isolation Forest (Scaled)",
+      "type": "Unsupervised",
+      "recall": 0.8666666666666667,
+      "precision": 0.9285714285714286,
+      "f1_score": 0.896551724137931,
+      "fpr": 0.016666666666666666,
+      "roc_auc": 0.9751605902777778,
+      "p50_latency_ms": 7.291399932000786,
+      "throughput_sps": 36077.747474214695,
+      "train_time_sec": 0.1770776999182999
+    },
+    {
+      "model": "Random Forest Classifier (Supervised)",
+      "type": "Supervised",
+      "recall": 0.9916666666666667,
+      "precision": 1.0,
+      "f1_score": 0.99581589958159,
+      "fpr": 0.0,
+      "roc_auc": 0.9999739583333334,
+      "p50_latency_ms": 4.45820001186803,
+      "throughput_sps": 56675.68758117364,
+      "train_time_sec": 0.14082800003234297
+    },
+    {
+      "model": "One-Class SVM (Unsupervised)",
+      "type": "Unsupervised",
+      "recall": 0.9333333333333333,
+      "precision": 0.6345609065155807,
+      "f1_score": 0.7554806070826307,
+      "fpr": 0.134375,
+      "roc_auc": 0.9654079861111111,
+      "p50_latency_ms": 0.16380002489313483,
+      "throughput_sps": 39986.404636829,
+      "train_time_sec": 0.04534279997460544
+    },
+    {
+      "model": "SVM Classifier (RBF Kernel)",
+      "type": "Supervised",
+      "recall": 0.9666666666666667,
+      "precision": 1.0,
+      "f1_score": 0.9830508474576272,
+      "fpr": 0.0,
+      "roc_auc": 0.9993836805555556,
+      "p50_latency_ms": 0.13465003576129675,
+      "throughput_sps": 44185.712671633846,
+      "train_time_sec": 0.12273259996436536
+    },
+    {
+      "model": "Neural Autoencoder (Reconstruction Error)",
+      "type": "Unsupervised",
+      "recall": 0.9708333333333333,
+      "precision": 0.9708333333333333,
+      "f1_score": 0.9708333333333333,
+      "fpr": 0.007291666666666667,
+      "roc_auc": 0.9766319444444443,
+      "p50_latency_ms": 0.13529998250305653,
+      "throughput_sps": 89012.18741733032,
+      "train_time_sec": 0.1395098000066355
+    }
+  ],
+  "pillar_2_network": {
+    "signature_avg_latency_ms": 0.013185866681548456,
+    "signature_p95_latency_ms": 0.01810002140700817,
+    "signature_max_pps": 75838.7767866137,
+    "dissector_avg_latency_ms": 0.010654399869963527,
+    "dissector_max_pps": 93857.93777265311
+  },
+  "pillar_3_storage": {
+    "seq_insert_avg_ms": 4.768772797193378,
+    "seq_insert_p95_ms": 8.269124972866846,
+    "seq_throughput_eps": 209.69755585515455,
+    "batch_throughput_eps": 83680.60815047925,
+    "query_avg_latency_ms": 1.662163999862969,
+    "query_p95_latency_ms": 2.2193900425918365,
+    "storage_bytes_per_event": 184.32
+  },
+  "pillar_4_blockchain": {
+    "hash_throughput_hps": 1658099.9944214837,
+    "estimated_gas_per_log": 52000,
+    "optimized_gas_per_log": 28000,
+    "gas_savings_pct": 46.15384615384615,
+    "ganache_connected": false,
+    "tx_latency_ms": 0.0
+  },
+  "pillar_5_alerting": {
+    "alert_avg_latency_ms": 0.25403287494555116,
+    "alert_p95_latency_ms": 0.3599449526518583,
+    "alert_throughput_aps": 3936.498377284191,
+    "dedup_suppression_pct": 99.8
+  }
+}
