@@ -1,0 +1,13 @@
+web3>=6.0.0
+py-solc-x>=1.1.1
+
+streamlit>=1.32.0
+plotly>=5.18.0
+pandas>=2.0.0
+
+requests>=2.31.0
+
+pyshark>=0.6.0
+
+scikit-learn>=1.4.0
+numpy>=1.26.0

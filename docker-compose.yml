@@ -1,0 +1,80 @@
+version: "3.9"
+
+services:
+
+  ganache:
+    image: trufflesuite/ganache:latest
+    container_name: securelog_ganache
+    ports:
+      - "7545:7545"
+    command: >
+      --port 7545 --deterministic --accounts 10 --defaultBalanceEther 100 --networkId 5777
+    restart: unless-stopped
+
+  deployer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: securelog_deployer
+    depends_on:
+      - ganache
+    environment:
+      - GANACHE_URL=http://ganache:7545
+    volumes:
+      - app_data:/data
+      - .:/app
+    command: python deploy_contract.py
+    restart: "no"
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: securelog_dashboard
+    depends_on:
+      - ganache
+    ports:
+      - "8501:8501"
+    environment:
+      - GANACHE_URL=http://ganache:7545
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - app_data:/data
+      - ./securelog.db:/app/securelog.db
+      - ./security_logs.txt:/app/security_logs.txt
+      - ./config.ini:/app/config.ini
+      - ./ml_model.pkl:/app/ml_model.pkl
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8501/_stcore/health" ]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  logger:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: securelog_logger
+    depends_on:
+      - ganache
+      - dashboard
+    environment:
+      - GANACHE_URL=http://ganache:7545
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - app_data:/data
+      - ./securelog.db:/app/securelog.db
+      - ./security_logs.txt:/app/security_logs.txt
+      - ./config.ini:/app/config.ini
+      - ./ml_model.pkl:/app/ml_model.pkl
+    command: python auto_logger.py
+    restart: unless-stopped
+
+volumes:
+  app_data:
+    driver: local
+
+networks:
+  default:
+    name: securelog_net

@@ -1,0 +1,48 @@
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python byte-compiled files & caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+.pytest_cache/
+
+# Databases & local state
+*.db
+*.sqlite3
+securelog.db
+security_logs.txt
+
+# Secrets, API keys & environment files
+.env
+.env.local
+.env.*.local
+config.ini
+
+# Node / Frontend build artifacts & dependencies
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.dist/
+.npm
+
+# Operating System & IDE artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Archives & Temporary files
+*.tar
+*.gz
+*.zip
+*.bak
+*.swp
+*.tmp
+test_output.txt
+test_results.txt
